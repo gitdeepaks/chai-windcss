@@ -4,139 +4,149 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chai Tailwind - Demo</title>
+  <meta name="description" content="Demo of the chai-* utility CSS engine — DOM scan, parse, inline styles." />
+  <title>chai-windcss — Utility engine demo</title>
   <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
-  <main class="container chai-p-6 chai-flex chai-flex-col chai-gap-6">
-    <header class="chai-bg-gray-100 chai-border chai-border-gray-200 chai-rounded-lg chai-p-5 chai-flex chai-flex-col chai-gap-3">
-      <div class="chai-flex chai-items-center chai-justify-between chai-gap-4">
-        <div class="chai-flex chai-items-center chai-gap-3">
-          <div class="chai-w-12 chai-h-12 chai-rounded-lg chai-bg-red chai-border chai-border-gray-200 chai-flex chai-items-center chai-justify-center">
-            <span class="chai-text-white chai-font-bold chai-text-lg">C</span>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="page">
+    <main id="main" tabindex="-1">
+      <header class="site-header" aria-labelledby="site-title">
+        <div class="site-header__top">
+          <div class="brand">
+            <div class="brand__mark" aria-hidden="true">C</div>
+            <div class="brand__text">
+              <h1 id="site-title" class="site-title">chai-* utility engine</h1>
+              <p class="site-subtitle">
+                Scan the DOM for <code>chai-*</code> classes, parse them into inline styles, then remove the originals.
+              </p>
+            </div>
           </div>
 
-          <div class="chai-flex chai-flex-col chai-gap-1">
-            <h1 class="chai-text-3xl chai-font-bold chai-text-gray-900 chai-mb-0">
-              chai-* utility engine
-            </h1>
-            <p class="chai-text-gray-700 chai-text-md chai-mb-0">
-              Scan the DOM for <code>chai-*</code> classes, parse them into inline styles, then remove the originals.
+          <button id="reapply" class="btn" type="button" aria-label="Re-scan the page and apply chai utilities">
+            <span class="btn__dot" aria-hidden="true"></span>
+            Re-run scan
+          </button>
+        </div>
+
+        <div class="site-header__meta">
+          <p class="site-header__meta-label">Supported utility groups</p>
+          <p>
+            Spacing (<kbd>p</kbd>/<kbd>m</kbd>), colors (<kbd>bg</kbd>/<kbd>text</kbd>), typography, borders &amp; radius,
+            and basic layout — all resolved at runtime.
+          </p>
+        </div>
+      </header>
+
+      <div class="demo-flow">
+        <!-- Hero: chai utilities on inner card -->
+        <section class="demo-panel" aria-labelledby="panel-hero">
+          <div class="demo-panel__head">
+            <h2 id="panel-hero" class="demo-panel__title">Hero &amp; layout</h2>
+            <span class="badge"><span class="badge__dot" aria-hidden="true"></span> Flex &amp; gap</span>
+          </div>
+          <div class="demo-panel__body">
+            <div class="chai-flex chai-flex-col chai-gap-3 chai-bg-gray-50 chai-border chai-border-gray-200 chai-rounded-lg chai-p-4">
+              <div class="chai-flex chai-items-center chai-justify-between chai-gap-4 chai-bg-white chai-border chai-border-gray-200 chai-rounded-lg chai-p-4">
+                <div class="chai-flex chai-flex-col chai-gap-2">
+                  <div class="chai-text-2xl chai-font-bold chai-text-gray-900">Hello</div>
+                  <div class="chai-text-md chai-text-gray-700">
+                    Try adding <code>chai-...</code> classes in DevTools, then use <strong>Re-run scan</strong> or the console.
+                  </div>
+                </div>
+                <div class="chai-w-24 chai-h-24 chai-rounded-lg chai-bg-gray-500 chai-border chai-border-white chai-flex chai-items-center chai-justify-center">
+                  <span class="chai-text-white chai-font-bold chai-text-lg">Box</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Spacing -->
+        <section class="demo-panel" aria-labelledby="panel-spacing">
+          <div class="demo-panel__head">
+            <h2 id="panel-spacing" class="demo-panel__title">Spacing</h2>
+          </div>
+          <div class="demo-panel__body">
+            <div class="chai-flex chai-flex-col chai-gap-3">
+              <div class="chai-bg-gray-100 chai-border chai-border-gray-200 chai-rounded-lg chai-p-4">
+                <div class="chai-text-gray-900 chai-font-bold chai-text-sm chai-mb-2">chai-p-4</div>
+                <div class="chai-text-gray-700 chai-text-sm">Uniform padding around this block.</div>
+              </div>
+              <div class="chai-bg-gray-100 chai-border chai-border-gray-200 chai-rounded-lg chai-p-4">
+                <div class="chai-text-gray-900 chai-font-bold chai-text-sm chai-mb-2">chai-mt-2</div>
+                <div class="chai-text-gray-700 chai-text-sm">Margin separates stacked blocks below.</div>
+              </div>
+              <div class="spacing-row">
+                <div class="chai-bg-gray-100 chai-border chai-border-gray-200 chai-rounded-lg chai-p-3">
+                  <div class="chai-text-gray-900 chai-font-bold chai-text-sm chai-mb-2">chai-p-2</div>
+                  <div class="chai-text-gray-700 chai-text-sm">Tighter padding.</div>
+                </div>
+                <div class="chai-bg-gray-100 chai-border chai-border-gray-200 chai-rounded-lg chai-p-3">
+                  <div class="chai-text-gray-900 chai-font-bold chai-text-sm chai-mb-2">chai-gap-3</div>
+                  <div class="chai-text-gray-700 chai-text-sm">Siblings use gap in flex parents.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Typography + colors -->
+        <section class="demo-panel" aria-labelledby="panel-typo">
+          <div class="demo-panel__head">
+            <h2 id="panel-typo" class="demo-panel__title">Typography &amp; colors</h2>
+          </div>
+          <div class="demo-panel__body">
+            <div class="typo-row">
+              <div class="typo-row__col">
+                <div class="chai-text-2xl chai-font-bold chai-text-center">Big text</div>
+                <div class="chai-text-md chai-text-gray-700 chai-uppercase chai-text-center">uppercase utility</div>
+              </div>
+              <div class="typo-row__swatches">
+                <div class="chai-bg-gray-500 chai-border chai-border-white chai-rounded-lg chai-p-3">
+                  <div class="chai-text-white chai-font-bold chai-text-sm chai-text-center">chai-bg-gray-500</div>
+                </div>
+                <div class="chai-bg-blue chai-border chai-border-white chai-rounded-lg chai-p-3">
+                  <div class="chai-text-white chai-font-bold chai-text-sm chai-text-center">chai-bg-blue</div>
+                </div>
+              </div>
+            </div>
+            <p class="hint-text chai-mt-2">
+              Alignment: <span class="chai-font-bold">chai-text-center</span> · Size: <span class="chai-font-bold">chai-text-3xl</span> ·
+              Color: <span class="chai-font-bold">chai-text-gray-700</span>
             </p>
           </div>
-        </div>
+        </section>
 
-        <button
-          id="reapply"
-          class="chai-inline-flex chai-items-center chai-gap-2 chai-bg-white chai-border chai-border-gray-200 chai-rounded-lg chai-p-3"
-          type="button"
-        >
-          <span class="chai-w-2 chai-h-2 chai-rounded chai-bg-gray-500"></span>
-          <span class="chai-text-gray-700 chai-text-sm chai-font-bold">Re-run</span>
-        </button>
-      </div>
-
-      <div class="chai-flex chai-flex-col chai-gap-2 chai-bg-white chai-border chai-border-gray-200 chai-rounded-lg chai-p-4">
-        <div class="chai-text-gray-900 chai-font-bold chai-text-sm chai-uppercase">Supported utility groups</div>
-        <div class="chai-text-gray-700 chai-text-sm">Spacing (p/m), Colors (bg/text), Typography (size/alignment), Borders & radius, Basic layout.</div>
-      </div>
-    </header>
-
-    <section class="chai-flex chai-flex-col chai-gap-4">
-      <div class="chai-flex chai-flex-col chai-gap-3 chai-bg-gray-50 chai-border chai-border-gray-200 chai-rounded-lg chai-p-4">
-        <div class="chai-flex chai-items-center chai-justify-between chai-gap-4">
-          <h2 class="chai-text-lg chai-font-bold chai-text-gray-900 chai-mb-0">Hero / Layout</h2>
-          <div class="chai-inline-flex chai-items-center chai-gap-2 chai-bg-gray-100 chai-border chai-border-gray-200 chai-rounded-lg chai-p-2">
-            <span class="chai-w-2 chai-h-2 chai-rounded chai-bg-blue"></span>
-            <span class="chai-text-gray-700 chai-text-sm chai-font-bold">Flex utilities</span>
+        <!-- Borders -->
+        <section class="demo-panel" aria-labelledby="panel-borders">
+          <div class="demo-panel__head">
+            <h2 id="panel-borders" class="demo-panel__title">Borders &amp; radius</h2>
           </div>
-        </div>
-
-        <div class="chai-flex chai-items-center chai-justify-between chai-gap-4 chai-bg-white chai-border chai-border-gray-200 chai-rounded-lg chai-p-4">
-          <div class="chai-flex chai-flex-col chai-gap-2">
-            <div class="chai-text-2xl chai-font-bold chai-text-gray-900">Hello</div>
-            <div class="chai-text-md chai-text-gray-700">
-              Try adding more <code>chai-...</code> classes in DevTools.
+          <div class="demo-panel__body">
+            <div class="demo-grid-borders">
+              <div class="chai-border chai-border-2 chai-border-dashed chai-border-blue chai-rounded-lg chai-p-4">
+                <div class="chai-text-blue chai-font-bold chai-text-center chai-mb-0">Dashed border</div>
+              </div>
+              <div class="chai-border chai-border-gray-300 chai-rounded-lg chai-p-4">
+                <div class="chai-text-gray-700 chai-font-bold chai-text-center chai-mb-0">Solid + rounded</div>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div class="chai-w-24 chai-h-24 chai-rounded-lg chai-bg-gray-500 chai-border chai-border-white chai-flex chai-items-center chai-justify-center">
-            <span class="chai-text-white chai-font-bold chai-text-lg">Box</span>
-          </div>
-        </div>
+        <footer class="site-footer">
+          <p class="chai-mb-0">
+            Open the console and run <code>applyChaiUtilities(document)</code> after editing <code>chai-*</code> classes, or click
+            <strong>Re-run scan</strong>.
+          </p>
+        </footer>
       </div>
-
-      <div class="chai-flex chai-flex-col chai-gap-3 chai-bg-white chai-border chai-border-gray-200 chai-rounded-lg chai-p-4">
-        <h2 class="chai-text-lg chai-font-bold chai-text-gray-900 chai-mb-0">Spacing</h2>
-        <div class="chai-flex chai-flex-col chai-gap-3">
-          <div class="chai-bg-gray-100 chai-border chai-border-gray-200 chai-rounded-lg chai-p-4">
-            <div class="chai-text-gray-900 chai-font-bold chai-text-sm chai-mb-2">chai-p-4</div>
-            <div class="chai-text-gray-700 chai-text-sm">Uniform padding.</div>
-          </div>
-
-          <div class="chai-bg-gray-100 chai-border chai-border-gray-200 chai-rounded-lg chai-p-4">
-            <div class="chai-text-gray-900 chai-font-bold chai-text-sm chai-mb-2">chai-mt-2</div>
-            <div class="chai-text-gray-700 chai-text-sm">Margin creates separation between blocks.</div>
-          </div>
-
-          <div class="chai-flex chai-items-center chai-gap-3">
-            <div class="chai-bg-gray-100 chai-border chai-border-gray-200 chai-rounded-lg chai-p-3">
-              <div class="chai-text-gray-900 chai-font-bold chai-text-sm chai-mb-2">chai-p-2</div>
-              <div class="chai-text-gray-700 chai-text-sm">Smaller padding.</div>
-            </div>
-            <div class="chai-bg-gray-100 chai-border chai-border-gray-200 chai-rounded-lg chai-p-3">
-              <div class="chai-text-gray-900 chai-font-bold chai-text-sm chai-mb-2">chai-gap-3</div>
-              <div class="chai-text-gray-700 chai-text-sm">Gap between siblings.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="chai-flex chai-flex-col chai-gap-3 chai-bg-white chai-border chai-border-gray-200 chai-rounded-lg chai-p-4">
-        <h2 class="chai-text-lg chai-font-bold chai-text-gray-900 chai-mb-0">Typography + Colors</h2>
-
-        <div class="chai-flex chai-items-center chai-justify-between chai-gap-4">
-          <div class="chai-flex chai-flex-col chai-gap-2">
-            <div class="chai-text-2xl chai-font-bold chai-text-center">Big text</div>
-            <div class="chai-text-md chai-text-gray-700 chai-uppercase chai-text-center">uppercase utility</div>
-          </div>
-
-          <div class="chai-flex chai-flex-col chai-gap-2">
-            <div class="chai-bg-gray-500 chai-border chai-border-white chai-rounded-lg chai-p-3">
-              <div class="chai-text-white chai-font-bold chai-text-sm chai-text-center">chai-bg-gray-500</div>
-            </div>
-            <div class="chai-bg-blue chai-border chai-border-white chai-rounded-lg chai-p-3">
-              <div class="chai-text-white chai-font-bold chai-text-sm chai-text-center">chai-bg-blue</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="chai-text-gray-700 chai-text-sm">
-          Alignment: <span class="chai-font-bold">chai-text-center</span>, size: <span class="chai-font-bold">chai-text-3xl</span>, color: <span class="chai-font-bold">chai-text-gray-700</span>.
-        </div>
-      </div>
-
-      <div class="chai-flex chai-flex-col chai-gap-3 chai-bg-white chai-border chai-border-gray-200 chai-rounded-lg chai-p-4">
-        <h2 class="chai-text-lg chai-font-bold chai-text-gray-900 chai-mb-0">Borders & Radius</h2>
-
-        <div class="chai-flex chai-items-center chai-gap-4">
-          <div class="chai-border chai-border-2 chai-border-dashed chai-border-blue chai-rounded-lg chai-p-4">
-            <div class="chai-text-blue chai-font-bold chai-text-center chai-mb-0">Dashed border</div>
-          </div>
-          <div class="chai-border chai-border-gray-300 chai-rounded-lg chai-p-4">
-            <div class="chai-text-gray-700 chai-font-bold chai-text-center chai-mb-0">Rounded card</div>
-          </div>
-        </div>
-      </div>
-
-      <footer class="chai-text-center chai-text-gray-600 chai-text-sm chai-bg-gray-500 chai-border chai-border-gray-400 chai-rounded-lg chai-p-4">
-        <div class="chai-text-white">
-          Open DevTools console and call <code>applyChaiUtilities(document)</code> to re-run after adding new <code>chai-*</code> classes.
-        </div>
-      </footer>
-    </section>
-  </main>
+    </main>
+  </div>
 
   <script type="module" src="./script.js"></script>
 </body>
